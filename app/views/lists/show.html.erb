@@ -1,13 +1,37 @@
+<div class="banneroi" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <p class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></p>
+  </div>
+</div>
+
 <div class="container py-5">
 
   <h2><%= @list.name %></h2>
+  <%if @list.photo.attached? %>
+    <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else  %>
+    <p>'no picture'</p>
+  <% end %>
 
-  <span class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></span>
+  <div class="card-grid">
+    <% @list.bookmarks.each do |bookmark| %>
 
-  <p><% @list.bookmarks.each do |bookmark| %>
-      <li class='list-group-item'><%= bookmark.comment %> <%= "Title: #{bookmark.movie.title}" %> <%= "Rating: #{bookmark.movie.rating}" %>
+      <div class="card-trip">
+        <%=image_tag bookmark.movie.poster_url %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <p><%= bookmark.comment %> </p>
+            <p><%= "Rating: #{bookmark.movie.rating}" %> </p>
+          </div>
+        </div>
+      </div>
+
+      <li class='list-group-item'> <%=  %>
+
       <% end %>
-    </p>
+    </div>
 
     <%= link_to "Back to list", lists_path, class: "btn btn-primary" %>
 
@@ -17,3 +41,16 @@
     <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary"%>
 
   </div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
