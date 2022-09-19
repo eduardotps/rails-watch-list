@@ -14,3 +14,17 @@
     </div>
   </div>
 </div>
+
+<% @lists.each do |list| %>
+  <div class="card-product">
+    <%if list.photo.attached? %>
+      <%= cl_image_tag(list.photo.key) %>
+    <% else  %>
+      <img src="<%= asset_path 'moviebg.jpg' %>">
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= link_to list.name, list_path(list) %> </h2>
+      <p>Product description with <strong>relevant info</strong> only.</p>
+    </div>
+  </div>
+<% end %>
