@@ -6,6 +6,7 @@
 <% end %>);">
   <div class="container">
     <h1><%= @list.name %></h1>
+    <p><%= @list.description %></p>
     <p class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></p>
   </div>
 </div>
@@ -39,4 +40,3 @@
     <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-primary"%>
 
   </div>
-
