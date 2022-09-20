@@ -1,16 +1,19 @@
-<div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
+<div class="show-cards">
 
-      <h1>List's</h1>
+  <h1>MOVIE LIST'S</h1>
 
-      <ul class="list-group">
-        <% @lists.each do |list| %>
-          <%= link_to list.name, list_path(list), class: 'list-group-item p-2 ml-1' %>
-        <% end %>
-      </ul>
-
-      <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %>
+  <% @lists.each do |list| %>
+    <div class="cards">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+      <%if list.photo.attached? %>
+        <%= cl_image_path(list.photo.key) %>
+      <% else  %>
+        <%= asset_path 'moviebg.jpg' %>
+      <% end %>);">
+        <%= link_to list.name, list_path(list) %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
+   <%= link_to "New List", new_list_path, class: "btn btn-primary" %>
 </div>
