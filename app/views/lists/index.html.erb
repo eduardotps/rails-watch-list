@@ -1,19 +1,23 @@
-<div class="show-cards">
+<div class="home-appear">
 
-  <h1>MOVIE LIST'S</h1>
+  <div class="title-img ">
+    <%= image_tag "title.png", class: 'rounded mx-auto d-block', :alt => "rss feed" %>
+  </div>
 
-  <% @lists.each do |list| %>
-    <div class="cards">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+  <div class="show-cards">
+    <% @lists.each do |list| %>
+      <div class="cards">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
       <%if list.photo.attached? %>
         <%= cl_image_path(list.photo.key) %>
       <% else  %>
         <%= asset_path 'moviebg.jpg' %>
       <% end %>);">
-        <%= link_to list.name, list_path(list) %>
+          <%= link_to list.name, list_path(list) %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-   <%= link_to "New List", new_list_path, class: "btn btn-primary" %>
+    <%= link_to "New List", new_list_path, class: "btn btn-primary" %>
+  </div>
 </div>
