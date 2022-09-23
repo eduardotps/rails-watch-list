@@ -6,9 +6,11 @@
           <%= f.input :name, placeholder: 'Insert a name' %>
           <%= f.input :description, placeholder: 'Insert a description' %>
           <%= f.input :photo, as: :file %>
-          <%= f.submit class: 'btn btn-primary' %>
+          <div class="d-flex">
+          <%= f.submit class: 'm-3 btn btn-primary' %>
         <% end %>
-        <%= link_to "Back to lists", lists_path, class: "btn btn-primary" %>
+        <%= link_to "Back to lists", lists_path, class: "m-3 btn btn-primary" %>
+        </div>
       </div>
     </div>
   </div>
